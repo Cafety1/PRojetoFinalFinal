@@ -1,5 +1,10 @@
 import { createRouter, createWebHistory } from "vue-router";
 import Home from "../views/Home.vue";
+import Course from "../views/Course.vue";
+import CourseForm from "../views/CourseForm.vue";
+import PainelAdm from "../views/PainelAdm.vue";
+import CourseDetails from "../views/CourseDetails.vue"
+
 
 const routes = [
   {
@@ -15,6 +20,27 @@ const routes = [
     // which is lazy-loaded when the route is visited.
     component: () =>
       import(/* webpackChunkName: "about" */ "../views/About.vue"),
+  },
+  {
+    path: "/course",
+    name: "Course",
+    component: Course,
+  },
+  {
+    path: "/courseform",
+    name: "CourseForm",
+    component: CourseForm,
+  },
+  {
+    path: "/PainelAdm",
+    name: "PainelAdm",
+    component: PainelAdm,
+  },
+  {
+    path: "/CourseDetails",
+    props: true,
+    name: "CourseDetails",
+    component: CourseDetails,
   },
 ];
 

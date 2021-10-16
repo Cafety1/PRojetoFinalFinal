@@ -1,7 +1,11 @@
 <template>
   <div id="nav">
     <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
+    <router-link to="/about">About</router-link> |
+    <router-link to="/course">Course</router-link> |
+    <router-link to="/courseform">Form</router-link> |
+    <router-link to="/PainelAdm">PainelAdm</router-link> |
+    <router-link to="/CourseDetails">CourseDetails</router-link> |
   </div>
   <router-view />
 </template>
