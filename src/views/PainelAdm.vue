@@ -1,56 +1,53 @@
 <template>
-  <table border="1">
-     <tr>
-       
-       <th><a href="" class="btn btn-default">Novo Curso</a></th>
-   </tr>
-   <tr>
-       <th>Educação financeira é tudo de bom</th>
-       <td><a href="" class="btn btn-default2">Editar</a><a href="" class="btn btn-default3">Deletar</a></td>
-   </tr>
-   <tr>
-       <th>Poupando e Rendendo</th>
-       <td><a href="" class="btn btn-default2">Editar</a><a href="" class="btn btn-default3">Deletar</a></td>
-   </tr>
-</table>
+<section class="home-title">
+        
+   <div class="container" style="margin-top: 40px;">
+
+            <router-link :to = "{name:'AddCourse', params:{}}" class="btn btn-default" style="margin-bottom: 60px;">+ adicionar novo curso</router-link>
+
+            <div class="row">
+                <div class="col-12 col-md-8 d-flex">
+
+                    <table class="table table-sm table-responsive">
+
+                        <thead class="table-thead">
+                            <tr>
+                                <th colspan="2">Curso</th>
+                                <th scope="col">Ações</th>
+                            </tr>
+                        </thead>
+
+                        <tbody class="table-tbody">
+
+                          <div class="courseformlist">
+                                <CourseFormList/>
+                          </div>
+
+                        </tbody>
+
+                    </table>
+                </div>
+            </div>
+        </div>
+        
+    </section>
 
 </template>
 
 <script>
-export default {
 
+import CourseFormList from '../components/CourseFormList.vue';
+
+export default {
+    name: "courseformlist",
+    components:{
+        CourseFormList,
+    }
 }
 </script>
 
-<style scoped>
-.btn-default2 {
-    color: white;
-    letter-spacing: 1px;
-    line-height: 25px;
-    width: 100px;
-    border: none;
-    border-radius: 40px;
-    background:orange;
-    transition: all 0.3s ease 0s;
-  }
-  .btn-default3 {
-    color: white;
-    letter-spacing: 1px;
-    line-height: 25px;
-    width: 100px;
-    border: none;
-    border-radius: 40px;
-    background: red;
-    transition: all 0.3s ease 0s;
-  }
-  .btn-default {
-    color: white;
-    letter-spacing: 1px;
-    line-height: 25px;
-    width: 130px;
-    border: none;
-    border-radius: 40px;
-    background: #419488;
-    transition: all 0.3s ease 0s;
-  }
+<style>
+
+@import '../../public/BodyCss.css';
+
 </style>

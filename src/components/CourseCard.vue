@@ -1,62 +1,50 @@
 <template>
+  <!-- Início Card 01 -->
+  <!-- <p style="font-size: 20px; font-weight: 400">
+    {{ course.title }}
+  </p> -->
 
-  <div class = "details">
- <section class="home-title">
+  <section class="section-card">
     <div class="container">
-        <div class="row">
-            <div class="col-md-6 d-flex">
-                <div class="align-self-center">
-                    
-                    <p style="font-size: 20px; font-weight: 400;">                        
-                        course.title
-                    </p>
-                </div>
-            </div>
+     <p style="font-size: 18px; font-weight: 400">
+              <!-- {{ course.tittle}} -->
+              {{ course.teacher.name}}
+            </p>
+      <div class="row">        
+        <div class="col-md-4 d-flex">          
+          <img :src="image" class="img-fluid" />
         </div>
-    </div>
-</section>
-<!-- Início Card 01 -->
-<section class="section-card"> 
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4 d-flex">
-                    <img src ="" class="img-fluid">
-                </div>
-                <div class="col-md-6 d-flex">
-                    <div class="align-self-center">
-                        <h2 class="title-component"> course.name </h2>
-                       
-                        <p style="font-size: 18px; font-weight: 400;">
-                            course.description
-                            
-                        </p>
-                        <a href="" class="btn btn-default">começar agora</a>
-                        
-                    </div>
-                </div>
-                <div class="grey-line">
-                </div>
-            </div>
-        </div>
-    </section> 
-  </div>
+        <div class="col-md-6 d-flex">
+          <div class="align-self-center">
+            <h2 class="title-component">{{ course.name }}</h2>
 
+            <p style="font-size: 18px; font-weight: 400">
+              {{ course.description }}
+            </p>
+            <router-link :to = "{name:CourseDetails,params:{coursedetails:course}}" class="btn btn-default">começar agora</router-link>
+          </div> 
+        </div>
+        <div class="grey-line"></div>
+      </div>
+    </div>
+  </section>
 </template>
 
 <script>
 export default {
-    name: "CourseCard",
-    props:{
-        course:Object,
+  name: "CourseCard",
+  props: {
+    course: Object,
+  },
+  computed:{
+    image(){
+      return "http://ec2-18-231-171-55.sa-east-1.compute.amazonaws.com:5000/Images/" + this.course.urlCover
+      
     },
-    computed:{
-      image(){
-        return require('../assets/' + this.course.image)
-      },      
-    },
-}
+  }
+};
 </script>
 
 <style>
-
+@import "../../public/BodyCss.css";
 </style>

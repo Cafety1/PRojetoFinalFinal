@@ -3,7 +3,10 @@ import Home from "../views/Home.vue";
 import Course from "../views/Course.vue";
 import CourseForm from "../views/CourseForm.vue";
 import PainelAdm from "../views/PainelAdm.vue";
-import CourseDetails from "../views/CourseDetails.vue"
+import CourseDetails from "../views/CourseDetails.vue";
+import AddCourse from "../components/AddCourse.vue";
+import AddLesson from "../components/AddLesson.vue";
+import FormEdit from "../components/FormEdit.vue";
 
 
 const routes = [
@@ -41,6 +44,21 @@ const routes = [
     props: true,
     name: "CourseDetails",
     component: CourseDetails,
+  },
+  {
+    path: "/AddCourse",
+    name: "AddCourse",    
+    component: AddCourse,
+  },
+  {
+    path: "/AddLesson",
+    name: "AddLesson",    
+    component: AddLesson,
+  },
+  {
+    path: "/FormEdit",
+    name: "FormEdit",    
+    component: FormEdit,
   },
 ];
 

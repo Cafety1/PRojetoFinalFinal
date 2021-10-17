@@ -6,14 +6,18 @@
       <button type="button" class="btn btn-danger">excluir</button>
     </td>
   </tr>
-    
+
 </template>
 
 <script>
-
-
-
-export default{
-  
-}
+export default {
+  name: "CourseFormCard",
+  props: {
+    courseform: Object,
+  },
+};
 </script>
+
+<style>
+@import "../../public/BodyCss.css";
+</style>

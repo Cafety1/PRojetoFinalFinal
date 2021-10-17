@@ -1,5 +1,17 @@
 <template>
-    <div class="card-group"> 
+<section class="home-title">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 d-flex">
+                <div class="align-self-center">
+                    <h2 class="title-home">Cursos</h2>                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <div class="section-card"> 
         <div v-for = "course in courses" :key = "course.id">
             <CourseCard :course = "course"/>
         </div>
@@ -9,6 +21,7 @@
 <script>
 
 import CourseCard from './CourseCard.vue';
+import CourseService from '../Service/CourseService.js';
 
 export default {
     components:{
@@ -18,13 +31,21 @@ export default {
     data(){
         return {
 
-            course :null,
+            courses :null,
             }
     },
+    created(){
+        CourseService.getAllCourses().then(response => {this.courses = response.data
+        console.log(response.data)
+        })
+        
+    }
 }
 
 </script>
 
 <style>
+
+@import '../../public/BodyCss.css';
 
 </style>
