@@ -21,24 +21,15 @@
 <script>
 
 import CourseCard from './CourseCard.vue';
-import CourseService from '../Service/CourseService.js';
 
 export default {
     components:{
         CourseCard
         },
         
-    data(){
-        return {
-
-            courses :null,
-            }
-    },
-    created(){
-        CourseService.getAllCourses().then(response => {this.courses = response.data
-        console.log(response.data)
-        })
-        
+    props:{
+            courses :[],
+            
     }
 }
 

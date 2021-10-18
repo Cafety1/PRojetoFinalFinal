@@ -1,13 +1,12 @@
 <template>
   <!-- Início Card 01 -->
-  <!-- <p style="font-size: 20px; font-weight: 400">
-    {{ course.title }}
-  </p> -->
+  
 
   <section class="section-card">
     <div class="container">
+      <h2> {{ course.title}} </h2>
      <p style="font-size: 18px; font-weight: 400">
-              <!-- {{ course.tittle}} -->
+              <br>
               {{ course.teacher.name}}
             </p>
       <div class="row">        
@@ -21,7 +20,8 @@
             <p style="font-size: 18px; font-weight: 400">
               {{ course.description }}
             </p>
-            <router-link :to = "{name:CourseDetails,params:{coursedetails:course}}" class="btn btn-default">começar agora</router-link>
+            
+            <router-link  :to="{name:'CourseDetails',params:{courseId:course.id}}" class="btn btn-default">começar agora</router-link>
           </div> 
         </div>
         <div class="grey-line"></div>
@@ -31,6 +31,9 @@
 </template>
 
 <script>
+
+
+
 export default {
   name: "CourseCard",
   props: {

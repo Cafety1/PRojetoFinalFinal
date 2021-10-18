@@ -19,10 +19,8 @@
 
                         <tbody class="table-tbody">
 
-                          <div class="courseformlist">
-                                <CourseFormList/>
-                          </div>
-
+                            <CourseFormList :courses="coursesList"/>
+                          
                         </tbody>
 
                     </table>
@@ -37,11 +35,24 @@
 <script>
 
 import CourseFormList from '../components/CourseFormList.vue';
+import STORE from "../store/index"
 
 export default {
     name: "courseformlist",
     components:{
         CourseFormList,
+    },
+    data(){
+        return {
+        coursesList: Object
+        }
+    },
+    async created(){
+       
+        await STORE.dispatch('fetchAllCourses')
+        console.log("no created do painel")
+        this.coursesList = STORE.getters.getCourses
+        
     }
 }
 </script>

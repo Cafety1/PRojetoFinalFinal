@@ -1,29 +1,16 @@
 import { createRouter, createWebHistory } from "vue-router";
-import Home from "../views/Home.vue";
 import Course from "../views/Course.vue";
 import CourseForm from "../views/CourseForm.vue";
 import PainelAdm from "../views/PainelAdm.vue";
 import CourseDetails from "../views/CourseDetails.vue";
 import AddCourse from "../components/AddCourse.vue";
 import AddLesson from "../components/AddLesson.vue";
-import FormEdit from "../components/FormEdit.vue";
+import NewForm from "../components/NewForm.vue";
 
 
 const routes = [
-  {
-    path: "/",
-    name: "Home",
-    component: Home,
-  },
-  {
-    path: "/about",
-    name: "About",
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () =>
-      import(/* webpackChunkName: "about" */ "../views/About.vue"),
-  },
+  
+  
   {
     path: "/course",
     name: "Course",
@@ -32,6 +19,7 @@ const routes = [
   {
     path: "/courseform",
     name: "CourseForm",
+    props: true,
     component: CourseForm,
   },
   {
@@ -56,9 +44,9 @@ const routes = [
     component: AddLesson,
   },
   {
-    path: "/FormEdit",
-    name: "FormEdit",    
-    component: FormEdit,
+    path: "/NewForm",
+    name: "NewForm",    
+    component: NewForm,
   },
 ];
 

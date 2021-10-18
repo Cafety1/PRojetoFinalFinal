@@ -1,5 +1,5 @@
 <template>
-  <section class="section-card">
+    <section class="section-card">
         <div class="container">
             <h2 class="title-component" style="margin-bottom: 30px;">Novo Curso</h2>
             <div class="form-curso">
@@ -38,31 +38,23 @@
                         <textarea class="form-control" id="FormControlTextarea2" rows="3"></textarea>
                     </div>
 
-                    <button type="submit" class="btn btn-default" style="margin-top: 20px;">Adicionar mais aulas</button>
+                    
                     <button type="submit" class="btn btn-default" style="margin-top: 20px;">salvar</button>
 
                 </form>
             </div>
         </div>
     </section>
+
 </template>
 
 <script>
 
 
-
 export default {
-    
-
-
 }
-
-
-
 </script>
 
 <style>
-
-@import '../../public/BodyCss.css';
-
+@import "../../public/BodyCss.css";
 </style>

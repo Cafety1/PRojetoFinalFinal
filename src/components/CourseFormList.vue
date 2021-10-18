@@ -1,33 +1,25 @@
 <template>
-    <div class="mb-3"> 
-        <div v-for = "courseform in courseforms" :key = "courseform.id">
-            <CourseFormCard :courseform = "courseform"/>
-        </div>
-    </div>
+     
+        <tr v-for = "course in courses" :key = "course.id">
+            <CourseFormCard :course = "course"/>
+        </tr>
+    
 </template>
 
 <script>
 
 import CourseFormCard from './CourseFormCard.vue';
-import FormService from '../Service/FormService.js';
+
 
 export default {
     components:{
         CourseFormCard,
         },
         
-    data(){
-        return {
-
-            courseforms :null,
-            }
+    props:{
+        courses : Object,
     },
-    created(){
-        FormService.getAllCoursesForm().then(response => {this.coursesform = response.data
-        console.log(response.data)
-        })
-        
-    }
+    
 }
 
 </script>

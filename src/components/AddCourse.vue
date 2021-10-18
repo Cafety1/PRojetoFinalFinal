@@ -1,4 +1,6 @@
 <template>
+
+
  <section class="section-card">
         <div class="container">
             <h2 class="title-component" style="margin-bottom: 30px;">Novo Curso</h2>
@@ -6,40 +8,28 @@
                 <form>
                     <div class="mb-3">
                         <label for="tituloCurso" class="form-label">Título do curso</label>
-                        <input type="text" class="form-control" id="tituloCurso" aria-describedby="emailHelp">
-                        <div id="emailHelp" class="form-text">Fique tranquilo, nós não vamos compartilhar seu e-mail com
-                            ninguém.</div>
+                        <input type="text" class="form-control" id="tituloCurso" aria-describedby="emailHelp" v-model = "dado.title">
+                        <div id="emailHelp" class="form-text">Por Favor, coloque o nome da Aula.</div>
                     </div>
                     <div class="mb-3">
                         <label for="formFile" class="form-label">Capa</label>
                         <input class="form-control" type="file" id="formFile">
                         <div id="imageHelp" class="form-text">Escolha uma imagem para ser a capa da sua aula.</div>
+                    <div><img :src="imageSrc"/></div>
                     </div>
                     <div class="mb-3">
                         <label for="nomeProfessor" class="form-label">Nome do professor</label>
-                        <input type="text" class="form-control" id="nomeProfessor" aria-describedby="nomeProfessor">
+                        <input type="text" class="form-control" id="nomeProfessor" aria-describedby="nomeProfessor" v-model = "dado.teacher.name">
                     </div>
                     <div class="mb-3">
                         <label for="descricaoCurso" class="form-label">Descrição do curso</label>
-                        <textarea class="form-control" id="FormControlTextarea1" rows="3"></textarea>
+                        <textarea class="form-control" id="FormControlTextarea1" rows="3" v-model = "dado.description"></textarea>
                     </div>
-
-                    <h4>Aula 1</h4>
-                    <div class="mb-3">
-                        <label for="tituloAula" class="form-label">Título da aula</label>
-                        <input type="text" class="form-control" id="tituloAula" aria-describedby="tituloAula">
+                    <div class = "mb-3" v-for="l in dado.lessons" :key = "l.id">
+                        <add-lesson :lesson ="l" @Nomedoeventoemitido = "metodoachamar" /> 
                     </div>
-                    <div class="mb-3">
-                        <label for="linkAula" class="form-label">Link da aula</label>
-                        <input type="text" class="form-control" id="linkAula" aria-describedby="linkAula">
-                    </div>
-                    <div class="mb-3">
-                        <label for="descricaoAula" class="form-label">Descrição da aula</label>
-                        <textarea class="form-control" id="FormControlTextarea2" rows="3"></textarea>
-                    </div>
-                    <router-link :to = "{name: 'AddLesson', params:{}}" 
-                    class="btn btn-default" style="margin-top: 20px;">Adicionar mais aulas
-                    </router-link>
+                    <button type = "button" @click ="AddLesson()" class="btn btn-default" style="margin-top: 20px;">Adicionar mais aulas</button>
+                    
                     <button type="submit" class="btn btn-default" style="margin-top: 20px;">salvar</button>
 
                 </form>
@@ -49,8 +39,48 @@
 </template>
 
 <script>
+import AddLesson from './AddLesson.vue'
+import CONFIG from "../Service/Config"
+
 export default {
-   
+  components: { 
+      AddLesson 
+    },
+   name: "AddCourse",
+
+   data(){
+       return {
+           dado: Object
+       }
+   },
+   props:{
+       course: Object
+   },
+   computed: {
+       imageSrc() {
+           return CONFIG.baseUrl+"/Images/"+this.dado.urlCover
+       }
+   },
+   created(){
+       console.log(this.dado)
+       console.log(this.course)
+       this.dado = this.course
+   },
+   methods:{
+       AddLesson(){
+           this.dado.lessons.push({
+                 id: 0,
+                 title: "",
+                order: 0,
+                link: null,
+                urlImage: null,
+                description: ""
+           }
+           )
+           
+       },
+       
+   }
 
 }
 </script>
