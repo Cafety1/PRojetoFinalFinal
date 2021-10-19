@@ -1,62 +1,154 @@
 <template>
+  <div class="accoordion-item">
+    <h4 v-if="novo" class="accordion-header" :id="header">
+      <button
+        class="accordion-button"
+        type="button"
+        data-bs-toggle="collapse"
+        v-bind:data-bs-target="panelId"
+        aria-expanded="true"
+        v-bind:aria-controls="panel"
+      >
+        Nova Aula
+      </button>
+    </h4>
+    <h4 v-if="!novo" class="accordion-header" :id="header">
+      <button
+        class="accordion-button"
+        type="button"
+        data-bs-toggle="collapse"
+        v-bind:data-bs-target="panelId"
+        aria-expanded="true"
+        v-bind:aria-controls="panel"
+      >
+      {{ dado.title }}
+      </button>
+    </h4>
 
-  <h4 v-if="novo">Nova Aula</h4>
-  <h4 v-if="!novo">{{dado.title}}</h4>
+    <div
+      :id="panel"
+      :class="dado.id <=0 ? 'accordion-collapse collapse show':'accordion-collapse collapse'"
+      v-bind:aria-labelledby="header"
+    >
+      <div class="accordion-body">
+        <div class="mb-3">
+          <label for="tituloAula" class="form-label">Título da aula</label>
+          <input
+            type="text"
+            class="form-control"
+            id="lesson.title"
+            aria-describedby="tituloAula"
+            v-model="dado.title"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="linkAula" class="form-label">Link da aula</label>
+          <input
+            type="text"
+            class="form-control"
+            id="lesson.url"
+            aria-describedby="linkAula"
+            v-model="dado.link"
+          />
+        </div>
+        <div class="mb-3">
+            <label for="formFile" class="form-label">Capa</label>
+                <input class="form-control" type="file" id="formFile" @change="previewFoto(this, lessonPhotoId);">
+                <div id="imageHelp" class="form-text">Escolha uma imagem para ser a capa da sua aula.</div>
 
-                    <div class="mb-3">
-                        <label for="tituloAula" class="form-label">Título da aula</label>
-                        <input type="text" class="form-control" id="lesson.title" aria-describedby="tituloAula" v-model="dado.title">
-                    </div>
-                    <div class="mb-3">
-                        <label for="linkAula" class="form-label">Link da aula</label>
-                        <input type="text" class="form-control" id="lesson.url" aria-describedby="linkAula" v-model="dado.link">                        
-                        <div class="mb-3" ><img style="width:100% " :src="imageSrc"/></div>
-                    </div>
-                    <div class="mb-3">
-                        <label for="descricaoAula" class="form-label">Descrição da aula</label>
-                        <textarea class="form-control" id="lesson.description" rows="3" v-model ="dado.description"></textarea>
-                    </div>
-                    
+          <div class="mb-3"><img :id="lessonPhotoId" style="width:100% " :src="imageSrc"/></div>
+        </div>
+        <div class="mb-3">
+          <label for="descricaoAula" class="form-label"
+            >Descrição da aula</label
+          >
+          <textarea
+            class="form-control"
+            id="lesson.description"
+            rows="3"
+            v-model="dado.description"
+          ></textarea>
+        </div>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
-import CONFIG from "../Service/Config"
+import CONFIG from "../Service/Config";
 
 export default {
-    data(){
-        return{
-            dado : Object
+  data() {
+    return {
+      dado: Object,
+    };
+  },
+  props: {
+    lesson: Object,
+  },
+
+  computed: {
+    novo() {
+      return this.dado.id == 0;
+    },
+    header() {
+        return "header_"+this.dado.id
+    },
+    
+    panel() {
+        return "panel_"+this.dado.id
+    },
+    panelId() {
+        return "#panel_"+this.dado.id
+    },
+    lessonPhotoId() {
+        return "lessonPhoto_"+this.dado.id
+    },
+
+
+    imageSrc() {
+        if (this.dado.urlImage != null && this.dado.urlImage>=0) {
+            return CONFIG.baseUrl + "/Images/" + this.dado.urlImage;
+        } else {
+            return ""
         }
     },
-        props:{
-            lesson: Object
-        },
+  },
 
-    computed : {
-        novo(){
-            return this.dado.id == 0
-        },
-        
-       imageSrc() {
-           return CONFIG.baseUrl+"/Images/"+this.dado.urlImage
-       }
-  
+  methods: {
+    onSubmit() {
+      this.$emit("lessonapagarcomclick", this.dado);
     },
+    previewFoto(evt, idElement) {
+        console.log(idElement)
+            this.dado.urlImage = 0
+    var tgt = evt.target || window.event.srcElement,
+    files = tgt.files;
 
-    methods:{
-        onSubmit() {
-            this.$emit('lessonapagarcomclick', this.dado);
-   }
-    },
-   
-   created(){
-       this.dado = this.lesson
-   }
+    // FileReader support
+    if (FileReader && files && files.length) {
+        var fr = new FileReader();
+        fr.onload = function () {
+            document.getElementById(idElement).src = fr.result;
+        }
+        fr.readAsDataURL(files[0]);
+    }
+
+    // Not supported
+    else {
+        // fallback -- perhaps submit the input to an iframe and temporarily store
+        // them on the server until the user's session ends.
+    }
 }
+
+  },
+
+  created() {
+    this.dado = this.lesson;
+  },
+};
 </script>
 
 <style>
-
 @import "../../public/BodyCss.css";
-
 </style>
