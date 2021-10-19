@@ -54,6 +54,16 @@ export default {
         this.coursesList = STORE.getters.getCourses
         
     }
+//     methods: {
+
+//     DeleteCourse(courseId) {
+//       axios.delete("" + course.id)
+//       .then(response => {
+//         this.result.splice(id, 1)
+//         console.log(this.result);
+//       });
+//     }
+// }
 }
 </script>
 

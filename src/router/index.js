@@ -10,7 +10,11 @@ import NewForm from "../components/NewForm.vue";
 
 const routes = [
   
-  
+  {
+    path: "/",
+    name: "Home",
+    component: Course,
+  },
   {
     path: "/course",
     name: "Course",
