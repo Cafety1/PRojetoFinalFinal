@@ -37,7 +37,7 @@ const STORE =  createStore({
       let ret = CourseService.saveCourse(course);
       context.commit("PUSH_COURSE", ret);
     },
-    deleteCourse(course) {
+    deleteCourse(context, course) {
       let ret = CourseService.deleteCourse(course.id);
       //to-do fazer o muttation do state de courses para exluir do array o curso
       context.commit("PUSH_COURSE", ret);

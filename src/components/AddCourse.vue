@@ -14,8 +14,8 @@
                     <div class="mb-3">
                         <label for="formFile" class="form-label">Capa</label>
                         <input class="form-control" type="file" id="formFile" @change="previewFoto(this,'coursePhoto');">
-                        <div id="imageHelp" class="form-text">Escolha uma imagem para ser a capa da sua aula.</div>
-                    <div class="mb-3" v-if="dado.urlCover"><img id="coursePhoto" style="width:100% " :src="imageSrc"/></div>
+                        <div id="imageHelp" class="form-text">Escolha uma imagem para ser a capa de seu curso.</div>
+                    <div class="mb-3"><img id="coursePhoto" style="width:100% " :src="imageSrc"/></div>
                     </div>
                     <div class="mb-3">
                         <label for="nomeProfessor" class="form-label">Nome do professor</label>
@@ -26,7 +26,7 @@
                         <label for="descricaoCurso" class="form-label">Descrição do curso</label>
                         <textarea class="form-control" id="FormControlTextarea1" rows="3" v-model = "dado.description"></textarea>
                     </div>
-                    <div class = "mb-3" v-for="l in dado.lessons" :key = "l.id">
+                    <div class = "mb-3 accordion" v-for="l in dado.lessons" :key = "l.id" id="lessonsAccordion">
                         <add-lesson :lesson ="l" @Nomedoeventoemitido = "metodoachamar" /> 
                     </div>
                     <button type = "button" @click ="AddLesson()" class="btn btn-default" style="margin-top: 20px;">Adicionar mais aulas</button>
@@ -52,7 +52,8 @@ export default {
 
    data(){
        return {
-           dado: Object
+           dado: Object,
+           qtdLessons : Number
        }
    },
    props:{
@@ -60,20 +61,23 @@ export default {
    },
    computed: {
        imageSrc() {
-           return CONFIG.baseUrl+"/Images/"+this.dado.urlCover
+        if (this.dado.urlCover != null && this.dado.urlCover>=0) {
+            return CONFIG.baseUrl+"/Images/"+this.dado.urlCover
+        } else {
+            return ""
+        }
        }
    },
    created(){
-       console.log(this.dado)
-       console.log(this.course)
-       
        this.dado = this.course
+        this.qtdLessons = this.course.lessons.length * -1
    },
    methods:{
        AddLesson(){
+           this.qtdLessons--
            this.dado.lessons.push({
-                 id: 0,
-                 title: "",
+                 id: this.qtdLessons,
+                 title: "Nova Aula",
                 order: 0,
                 link: null,
                 urlImage: null,
@@ -87,8 +91,10 @@ export default {
             // se nova grava a imagem antes e atualiza o id da foto no this.dado
             this.$emit('CourseForm-submitted', this.dado);
         },
-
        previewFoto(evt, idElement) {
+            this.dado.urlCover = 0
+
+console.log("previewPhoto "+idElement)
     var tgt = evt.target || window.event.srcElement,
     files = tgt.files;
 
@@ -107,7 +113,7 @@ export default {
         // them on the server until the user's session ends.
     }
 }
-       
+
    }
 
 }
