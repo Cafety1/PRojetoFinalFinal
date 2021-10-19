@@ -10,7 +10,7 @@
                     <div class="mb-3">
                         <label for="linkAula" class="form-label">Link da aula</label>
                         <input type="text" class="form-control" id="lesson.url" aria-describedby="linkAula" v-model="dado.link">                        
-                        <div><img :src="imageSrc"/></div>
+                        <div class="mb-3" ><img style="width:100% " :src="imageSrc"/></div>
                     </div>
                     <div class="mb-3">
                         <label for="descricaoAula" class="form-label">Descrição da aula</label>
