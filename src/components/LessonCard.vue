@@ -1,18 +1,19 @@
 <template>
-        <div class="container">
+       
             
-
+            
                 <div class="col-md-5">
                     <div class="embed-responsive embed-responsive-21by9">
-                        <iframe class="embed-responsive-item" width="100%" height="260" src="{{lesson.link}}"
-                            title="YouTube video player" frameborder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                            allowfullscreen>
-                        </iframe>
+                        <!-- <iframe class="embed-responsive-item"  src="https://www.youtube.com/watch?v=0-mKwNMXETo"> -->
+                        <img src="{{lesson.urlImage}}" class="img-thumbnail"/>
+                        
+
+
+                        <!-- </iframe> -->
                     </div>
                 </div>
                 <div class="col-md-5">
-                    <h2 class="title-component">Aula {{lesson.order}} </h2>
+                    <h2 class="title-component">Aula {{lesson.order}} - {{lesson.title}} </h2>
                     <p style="font-size: 20px; font-weight: 300;">
                          {{lesson.description}}
                     </p>
@@ -20,7 +21,7 @@
                     <div class="grey-line-aulas col-md-10">
                     </div>
             
-        </div>
+       
 
            
 </template>

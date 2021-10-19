@@ -60,13 +60,7 @@ export default {
          newCourse() {
              router.push({name:"CourseForm",params:{courseId:0}})
          }
-//     DeleteCourse(courseId) {
-//       axios.delete("" + course.id)
-//       .then(response => {
-//         this.result.splice(id, 1)
-//         console.log(this.result);
-//       });
-//     }
+
    }
 }
 </script>

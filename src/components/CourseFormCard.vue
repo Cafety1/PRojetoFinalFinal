@@ -13,6 +13,8 @@
 <script>
 
 import STORE from "../store/index"
+
+
 export default {
   name: "CourseFormCard",
   props: {
@@ -22,7 +24,9 @@ export default {
     deleteCourse() {
       if(confirm("confirma a exclusão do curso \n"+this.course.title)){
         STORE.dispatch('deleteCourse', this.course)
+                
       }
+      location.reload();
     }
   }
   

@@ -35,11 +35,10 @@
     </section>
       <!-- Início Card 01 -->
       <section class="section-card" style="background-color: #F6F6F6;">    
-         <div class="container">
-            <div class="row justify-content-center">
+         
+            
               <LessonList :lessons = "coursedetail.lessons" />
-            </div>
-        </div>
+            
      </section>
   </div> 
 </template>

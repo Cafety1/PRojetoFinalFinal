@@ -27,7 +27,7 @@
                         <textarea class="form-control" id="FormControlTextarea1" rows="3" v-model = "dado.description"></textarea>
                     </div>
                     <div class = "mb-3 accordion" v-for="l in dado.lessons" :key = "l.id" id="lessonsAccordion">
-                        <add-lesson :lesson ="l" @Nomedoeventoemitido = "metodoachamar" /> 
+                        <add-lesson :lesson ="l" /> 
                     </div>
                     <button type = "button" @click ="AddLesson()" class="btn btn-default" style="margin-top: 20px;">Adicionar mais aulas</button>
                     
@@ -42,6 +42,7 @@
 <script>
 import AddLesson from './AddLesson.vue'
 import CONFIG from "../Service/Config"
+import router from "../router/index"
 import SelectTeachers from "../components/SelectTeachers.vue"
 export default {
   components: { 
@@ -90,6 +91,7 @@ export default {
             //verifica se a imagem é nova
             // se nova grava a imagem antes e atualiza o id da foto no this.dado
             this.$emit('CourseForm-submitted', this.dado);
+            setTimeout(() => router.push({name:"PainelAdm",params:{}}) , 1000 )
         },
        previewFoto(evt, idElement) {
             this.dado.urlCover = 0
