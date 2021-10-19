@@ -3,7 +3,8 @@
         
    <div class="container" style="margin-top: 40px;">
 
-            <router-link :to = "{name:'AddCourse', params:{}}" class="btn btn-default" style="margin-bottom: 60px;">+ adicionar novo curso</router-link>
+            
+            <button @click="newCourse" class="btn btn-default" style="margin-bottom: 60px;">+ adicionar novo curso</button>
 
             <div class="row">
                 <div class="col-12 col-md-8 d-flex">
@@ -36,6 +37,7 @@
 
 import CourseFormList from '../components/CourseFormList.vue';
 import STORE from "../store/index"
+import router from "../router/index"
 
 export default {
     name: "courseformlist",
@@ -53,9 +55,11 @@ export default {
         console.log("no created do painel")
         this.coursesList = STORE.getters.getCourses
         
-    }
-//     methods: {
-
+    },
+     methods: {
+         newCourse() {
+             router.push({name:"CourseForm",params:{courseId:0}})
+         }
 //     DeleteCourse(courseId) {
 //       axios.delete("" + course.id)
 //       .then(response => {
@@ -63,7 +67,7 @@ export default {
 //         console.log(this.result);
 //       });
 //     }
-// }
+   }
 }
 </script>
 

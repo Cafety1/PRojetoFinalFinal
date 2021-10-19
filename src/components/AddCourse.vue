@@ -5,7 +5,7 @@
         <div class="container">
             <h2 class="title-component" style="margin-bottom: 30px;">Novo Curso</h2>
             <div class="form-curso">
-                <form>
+                <form  @submit.prevent="onSubmit">
                     <div class="mb-3">
                         <label for="tituloCurso" class="form-label">Título do curso</label>
                         <input type="text" class="form-control" id="tituloCurso" aria-describedby="emailHelp" v-model = "dado.title">
@@ -13,12 +13,13 @@
                     </div>
                     <div class="mb-3">
                         <label for="formFile" class="form-label">Capa</label>
-                        <input class="form-control" type="file" id="formFile">
+                        <input class="form-control" type="file" id="formFile" @change="previewFoto(this,'coursePhoto');">
                         <div id="imageHelp" class="form-text">Escolha uma imagem para ser a capa da sua aula.</div>
-                    <div><img :src="imageSrc"/></div>
+                    <div class="mb-3" v-if="dado.urlCover"><img id="coursePhoto" style="width:100% " :src="imageSrc"/></div>
                     </div>
                     <div class="mb-3">
                         <label for="nomeProfessor" class="form-label">Nome do professor</label>
+                        <SelectTeachers :teacher="dado.teacher"  />
                         <input type="text" class="form-control" id="nomeProfessor" aria-describedby="nomeProfessor" v-model = "dado.teacher.name">
                     </div>
                     <div class="mb-3">
@@ -41,10 +42,11 @@
 <script>
 import AddLesson from './AddLesson.vue'
 import CONFIG from "../Service/Config"
-
+import SelectTeachers from "../components/SelectTeachers.vue"
 export default {
   components: { 
-      AddLesson 
+      AddLesson,
+      SelectTeachers
     },
    name: "AddCourse",
 
@@ -64,6 +66,7 @@ export default {
    created(){
        console.log(this.dado)
        console.log(this.course)
+       
        this.dado = this.course
    },
    methods:{
@@ -79,10 +82,39 @@ export default {
            )
            
        },
+        onSubmit() {
+            //verifica se a imagem é nova
+            // se nova grava a imagem antes e atualiza o id da foto no this.dado
+            this.$emit('CourseForm-submitted', this.dado);
+        },
+
+       previewFoto(evt, idElement) {
+    var tgt = evt.target || window.event.srcElement,
+    files = tgt.files;
+
+    // FileReader support
+    if (FileReader && files && files.length) {
+        var fr = new FileReader();
+        fr.onload = function () {
+            document.getElementById(idElement).src = fr.result;
+        }
+        fr.readAsDataURL(files[0]);
+    }
+
+    // Not supported
+    else {
+        // fallback -- perhaps submit the input to an iframe and temporarily store
+        // them on the server until the user's session ends.
+    }
+}
        
    }
 
 }
+
+
+
+
 </script>
 
 <style>

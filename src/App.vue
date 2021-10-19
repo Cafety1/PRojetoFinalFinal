@@ -9,6 +9,7 @@
 import STORE from "./store/index"
 export default {
   setup() {
+    STORE.dispatch('fetchAllTeachers')
     STORE.dispatch('fetchAllCourses')
         
   },

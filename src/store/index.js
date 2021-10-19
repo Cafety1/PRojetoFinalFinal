@@ -28,8 +28,18 @@ const STORE =  createStore({
         await context.commit('SET_COURSES',response.data)
         console.log("commit com "+response.data)
     },
+    async fetchAllTeachers(context) {
+      let response = await CourseService.getAllTeachers()
+      await context.commit('SET_TEACHERS',response.data)
+      console.log("commit com "+response.data)
+    },
     saveCourse(context, course) {
       let ret = CourseService.saveCourse(course);
+      context.commit("PUSH_COURSE", ret);
+    },
+    deleteCourse(course) {
+      let ret = CourseService.deleteCourse(course.id);
+      //to-do fazer o muttation do state de courses para exluir do array o curso
       context.commit("PUSH_COURSE", ret);
     }
   },
@@ -42,6 +52,9 @@ const STORE =  createStore({
     },
     getCourses: (state) =>{
       return state.courses;
+    },
+    getTeachers: (state) =>{
+      return state.teachers;
     }
   },
   modules: {},
