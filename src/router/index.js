@@ -5,7 +5,7 @@ import PainelAdm from "../views/PainelAdm.vue";
 import CourseDetails from "../views/CourseDetails.vue";
 import AddCourse from "../components/AddCourse.vue";
 import AddLesson from "../components/AddLesson.vue";
-import NewForm from "../components/NewForm.vue";
+
 
 
 const routes = [
@@ -47,11 +47,7 @@ const routes = [
     name: "AddLesson",    
     component: AddLesson,
   },
-  {
-    path: "/NewForm",
-    name: "NewForm",    
-    component: NewForm,
-  },
+  
 ];
 
 const router = createRouter({

@@ -1,29 +1,46 @@
 # cafeinaprojeto
 
-## Project setup
+## 🧾 About
+
+**Dados da Cafeina** is a project where I learned a lot (even now I learned from this README.md) and this is a project that consumes the Cafeina's APIs.
+
+## 🔧 Tools
+
+- [HTML](https://vuejs.org/)
+- [CSS](https://www.w3.org/Style/CSS/Overview.en.html)
+- [JavaScript](https://www.javascript.com/)
+- [Bootstramp](https://getbootstrap.com/)
+- [Vue.Js](https://vuejs.org/) 💚
+
+## 👨‍💻 How to Setup
+
+```bash
+  # Clone the project
+  $ git clone https://github.com/Cafety1/PRojetoFinalFinal.git
 ```
-npm install
+```bash
+  # Enter directory
+  $ cd cafeinaprojeto
 ```
 
-### Compiles and hot-reloads for development
+```bash
+  # Install the dependencies, if you use npm
+  $ npm install
 ```
-npm run serve
+<p align="center">or</p>
+
+```bash
+  # Install the dependencies, if you use yarn
+  $ yarn
 ```
 
-### Compiles and minifies for production
-```
-npm run build
-```
 
-### Run your unit tests
-```
+
+```bash
 npm run test:unit
 ```
 
 ### Lints and fixes files
-```
+```bash
 npm run lint
 ```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).

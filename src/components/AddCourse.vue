@@ -27,7 +27,7 @@
                         <textarea class="form-control" id="FormControlTextarea1" rows="3" v-model = "dado.description"></textarea>
                     </div>
                     <div class = "mb-3 accordion" v-for="l in dado.lessons" :key = "l.id" id="lessonsAccordion">
-                        <add-lesson :lesson ="l" @Nomedoeventoemitido = "metodoachamar" /> 
+                        <add-lesson :lesson ="l" @lessonAcima = "acima" @lessonAbaixo = "abaixo"/> 
                     </div>
                     <button type = "button" @click ="AddLesson()" class="btn btn-default" style="margin-top: 20px;">Adicionar mais aulas</button>
                     
@@ -42,6 +42,7 @@
 <script>
 import AddLesson from './AddLesson.vue'
 import CONFIG from "../Service/Config"
+import router from "../router/index"
 import SelectTeachers from "../components/SelectTeachers.vue"
 export default {
   components: { 
@@ -53,7 +54,8 @@ export default {
    data(){
        return {
            dado: Object,
-           qtdLessons : Number
+           qtdLessons : Number,
+           imageRender: String
        }
    },
    props:{
@@ -71,8 +73,37 @@ export default {
    created(){
        this.dado = this.course
         this.qtdLessons = this.course.lessons.length * -1
+        this.imageRender = ""
    },
    methods:{
+       acima(id) {
+            console.log("entrou no acima  "+id)
+            let i = -1
+            for (let x =0; x< this.dado.lessons.length; x++) {
+                if (this.dado.lessons[x].id == id) {
+                    i = x
+                }
+            }
+            if (i > 0) {
+                let temp = this.dado.lessons[i]
+                this.dado.lessons[i] = this.dado.lessons[i-1]
+                this.dado.lessons[i-1] = temp
+            }
+       },
+       abaixo(id) {
+            console.log("entrou no acima  "+id)
+            let i = -1
+            for (let x = 0; x < this.dado.lessons.length; x++) {
+                if (this.dado.lessons[x].id == id) {
+                    i = x
+                }
+            }
+            if (i < this.dado.lessons.length - 1) {
+                let temp = this.dado.lessons[i]
+                this.dado.lessons[i] = this.dado.lessons[i+1]
+                this.dado.lessons[i+1] = temp
+            }
+       },
        AddLesson(){
            this.qtdLessons--
            this.dado.lessons.push({
@@ -87,14 +118,17 @@ export default {
            
        },
         onSubmit() {
+            console.log("entrou no onSubmit")
             //verifica se a imagem é nova
             // se nova grava a imagem antes e atualiza o id da foto no this.dado
-            this.$emit('CourseForm-submitted', this.dado);
+            console.log(this.dado)
+            console.log(this.dado.urlCover)
+            console.log(document.getElementById('coursePhoto').src.substring(document.getElementById('coursePhoto').src.indexOf(',')+1) )
+            
+            this.$emit('CourseForm-submitted', JSON.stringify(this.dado), this.dado.urlCover, document.getElementById('coursePhoto').src.substring(document.getElementById('coursePhoto').src.indexOf(',')+1) );
+            setTimeout(() => router.push({name:"PainelAdm",params:{}}) , 1000 )
         },
        previewFoto(evt, idElement) {
-            this.dado.urlCover = 0
-
-console.log("previewPhoto "+idElement)
     var tgt = evt.target || window.event.srcElement,
     files = tgt.files;
 
@@ -103,6 +137,8 @@ console.log("previewPhoto "+idElement)
         var fr = new FileReader();
         fr.onload = function () {
             document.getElementById(idElement).src = fr.result;
+            
+
         }
         fr.readAsDataURL(files[0]);
     }

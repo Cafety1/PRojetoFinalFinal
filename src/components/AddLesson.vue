@@ -9,7 +9,7 @@
         aria-expanded="true"
         v-bind:aria-controls="panel"
       >
-        Nova Aula
+        Nova Aula 
       </button>
     </h4>
     <h4 v-if="!novo" class="accordion-header" :id="header">
@@ -31,6 +31,7 @@
       v-bind:aria-labelledby="header"
     >
       <div class="accordion-body">
+        <button type='button' @click="emitAcima">↑</button><button type='button' @click="emitAbaixo">↓</button>
         <div class="mb-3">
           <label for="tituloAula" class="form-label">Título da aula</label>
           <input
@@ -81,6 +82,7 @@ export default {
   data() {
     return {
       dado: Object,
+      imageRender:String
     };
   },
   props: {
@@ -89,7 +91,8 @@ export default {
 
   computed: {
     novo() {
-      return this.dado.id == 0;
+      return this.dado.id <= 0;
+      
     },
     header() {
         return "header_"+this.dado.id
@@ -119,6 +122,16 @@ export default {
     onSubmit() {
       this.$emit("lessonapagarcomclick", this.dado);
     },
+    emitAcima() {
+      this.$emit("lessonAcima", this.dado.id);
+
+    },
+    emitAbaixo() {
+      this.$emit("lessonAbaixo", this.dado.id);
+
+    },
+    
+
     previewFoto(evt, idElement) {
         console.log(idElement)
             this.dado.urlImage = 0
@@ -128,9 +141,15 @@ export default {
     // FileReader support
     if (FileReader && files && files.length) {
         var fr = new FileReader();
+        this.dado.urlImage = -1
+        this.dado.image64 = ""
+        console.log(this)
         fr.onload = function () {
+            console.log(this.parent)
+            ///ver copm breno
             document.getElementById(idElement).src = fr.result;
-        }
+
+        }        
         fr.readAsDataURL(files[0]);
     }
 
@@ -145,6 +164,8 @@ export default {
 
   created() {
     this.dado = this.lesson;
+    this.dado.imageRender = ""
+    this.imageRender = ""
   },
 };
 </script>

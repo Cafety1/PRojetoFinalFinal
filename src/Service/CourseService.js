@@ -16,6 +16,7 @@ export default{
         }
         return ret;
     },
+    
     async deleteCourse(idCourse){
         let ret;
         ret = await apiClient.delete('/Courses/'+idCourse+"?confirm=Yes")

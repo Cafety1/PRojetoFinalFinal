@@ -1,10 +1,11 @@
 <template>
-    <div class="col-md-5"> 
-        <div class = "accordion" id ="accordion-lesson" v-for = "lesson in lessons" :key = "lesson.id">
-            <LessonCard :lesson = "lesson"/>
-            
+         
+        <div class="container" v-for = "lesson in lessons" :key = "lesson.id">
+            <div class="row justify-content-center">
+                <LessonCard :lesson = "lesson"/>
+            </div>
         </div>
-    </div>
+   
 </template>
 
 <script>
