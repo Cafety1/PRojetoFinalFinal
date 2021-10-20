@@ -27,7 +27,9 @@
                         <textarea class="form-control" id="FormControlTextarea1" rows="3" v-model = "dado.description"></textarea>
                     </div>
                     <div class = "mb-3 accordion" v-for="l in dado.lessons" :key = "l.id" id="lessonsAccordion">
+
                         <add-lesson :lesson ="l" @lessonAcima = "acima" @lessonAbaixo = "abaixo"/> 
+
                     </div>
                     <button type = "button" @click ="AddLesson()" class="btn btn-default" style="margin-top: 20px;">Adicionar mais aulas</button>
                     
@@ -121,11 +123,13 @@ export default {
             console.log("entrou no onSubmit")
             //verifica se a imagem é nova
             // se nova grava a imagem antes e atualiza o id da foto no this.dado
+
             console.log(this.dado)
             console.log(this.dado.urlCover)
             console.log(document.getElementById('coursePhoto').src.substring(document.getElementById('coursePhoto').src.indexOf(',')+1) )
             
             this.$emit('CourseForm-submitted', JSON.stringify(this.dado), this.dado.urlCover, document.getElementById('coursePhoto').src.substring(document.getElementById('coursePhoto').src.indexOf(',')+1) );
+
             setTimeout(() => router.push({name:"PainelAdm",params:{}}) , 1000 )
         },
        previewFoto(evt, idElement) {
