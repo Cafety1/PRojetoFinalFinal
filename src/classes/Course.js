@@ -5,6 +5,8 @@ export default class Course {
         this.description = ""
         this.teacher = {id: 0, name: ""}
         this.urlCover = null
-        this.lessons = []        
+        this.lessons = []  
+        console.log(json)      
         }
+        
 }

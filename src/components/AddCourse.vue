@@ -183,7 +183,7 @@ export default {
           document.getElementById(idElement).src = fr.result;
         };
         fr.readAsDataURL(files[0]);
-      }else {
+      }else {//Sai do else
                     
       }
     },

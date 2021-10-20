@@ -162,7 +162,7 @@ export default {
             .substring(fr.result.toString().indexOf(",") + 1);
         };
         fr.readAsDataURL(files[0]);
-      }else {        
+      }else {  //Sai do else      
       }
     },
   },

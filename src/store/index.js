@@ -34,7 +34,8 @@ const STORE =  createStore({
       context.commit("PUSH_COURSE", ret);
     },
     deleteCourse(context, course) {
-      let ret = CourseService.deleteCourse(course.id);      
+      let ret = CourseService.deleteCourse(course.id);
+      console.log(ret)     
     }
   },
   getters: {
