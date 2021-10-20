@@ -4,12 +4,7 @@
             
                 <div class="col-md-5">
                     <div class="embed-responsive embed-responsive-21by9">
-                        <!-- <iframe class="embed-responsive-item"  src="https://www.youtube.com/watch?v=0-mKwNMXETo"> -->
-                        <img src="{{lesson.urlImage}}" class="img-thumbnail"/>
                         
-
-
-                        <!-- </iframe> -->
                     </div>
                 </div>
                 <div class="col-md-5">
@@ -17,6 +12,7 @@
                     <p style="font-size: 20px; font-weight: 300;">
                          {{lesson.description}}
                     </p>
+                    <button @click="GoLink()"> Teste</button>
                 </div>
                     <div class="grey-line-aulas col-md-10">
                     </div>
@@ -29,11 +25,20 @@
 <script>
 
 
+
 export default {
     name: "LessonCard",
         props:{
             lesson:Object,
         },
+        
+        methods:{
+            GoLink(){
+                window.open(this.lesson.link);
+
+
+            }
+        }
     
 }
 </script>
