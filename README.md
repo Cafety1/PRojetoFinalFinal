@@ -1,8 +1,5 @@
-# cafeinaprojeto
+
 <h1 align="center">
-  <img 
-    src="https://uploaddeimagens.com.br/imagens/0PvnS4Q"
-  />
   <p>☕Cafeina Project ☕</p>
 </h1>
 <h1>
