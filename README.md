@@ -1,5 +1,13 @@
 # cafeinaprojeto
+<h1>
+  <img 
+    src="https://s10.gifyu.com/images/GIF-Projeto.gif"
+  />
+</h1>
 
+<h2 align="center">
+  <a href="http://150.230.69.203/" target="_blank">See the site</a>
+</h2>
 ## 🧾 About
 
 **Dados da Cafeina** is a project where I learned a lot (even now I learned from this README.md) and this is a project that consumes the Cafeina's APIs.
