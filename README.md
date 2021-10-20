@@ -13,7 +13,7 @@
 </h2>
 ## 🧾 About
 
-**Dados da Cafeina** é um projeto feito por estudantes do Curso da Gama Academy com os usos das ferramentas vue.js(com html,css e javaScript), um back-end criado com C# se comunicando com um banco de dados. Nesse Grupo temos os estudantes Jean Paulo, Vitor Bandeira, Adriano Siqueira, Breno Xavier, Aline Rosa e Fabricio Santos, todos de alguma forma contribuiram para esse projeto está completo, agradeço a todos pelo empenho e dedicação. 
+**Dados da Cafeina** é um projeto feito por estudantes do Curso da Gama Academy com os usos das ferramentas vue.js(com html,css e javaScript), um back-end criado com C# se comunicando com um banco de dados. Nesse Grupo temos os estudantes Jean Paul, Vitor Bandeira, Adriano Siqueira, Breno Xavier, Aline Rosa e Fabricio Santos, todos de alguma forma contribuiram para esse projeto está completo, agradeço a todos pelo empenho e dedicação. 
 
 ## 🔧 Tools
 
