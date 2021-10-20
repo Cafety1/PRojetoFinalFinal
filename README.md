@@ -1,4 +1,10 @@
 # cafeinaprojeto
+<h1 align="center">
+  <img 
+    src="../../public/logoDin.svg"
+  />
+  <p>☕Cafeina Project ☕</p>
+</h1>
 <h1>
   <img 
     src="https://s10.gifyu.com/images/GIF-Projeto.gif"
