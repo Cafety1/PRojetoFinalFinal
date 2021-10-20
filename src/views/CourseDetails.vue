@@ -5,9 +5,9 @@
       <div class="container">
         <div class="row">
           <div class="col-md-6 d-flex">
-            <div class="align-self-center">
+            <div class="align-self-start">
               <h2 class="title-home">{{coursedetail.title}}</h2>
-              <p style="font-size: 20px; font-weight: 400"></p> pelo professor: {{coursedetail.teacher.name}}
+              <p style="font-size: 20px; font-weight: 700"> <br>pelo professor: {{coursedetail.teacher.name}}</p>
             </div>
           </div>
         </div>
@@ -21,15 +21,15 @@
             <img :src="image" class="img-fluid" />
           </div>
           <div class="col-md-6 d-flex">
-            <div class="align-self-center">
+            <div class="align-self-start">
               <h2 class="title-component">{{coursedetail.name}}</h2>
 
-              <p style="font-size: 18px; font-weight: 400">
+              <p class="align-self-start" style="font-size: 18px; font-weight: 400">
+              
                 {{coursedetail.description}}
               </p>              
             </div>
           </div>
-          <div class="grey-line"></div>
         </div>
       </div> 
     </section>

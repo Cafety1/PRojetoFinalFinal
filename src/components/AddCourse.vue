@@ -15,7 +15,8 @@
                         <label for="formFile" class="form-label">Capa</label>
                         <input class="form-control" type="file" id="formFile" @change="previewFoto(this,'coursePhoto');">
                         <div id="imageHelp" class="form-text">Escolha uma imagem para ser a capa de seu curso.</div>
-                    <div class="mb-3"><img id="coursePhoto" style="width:100% " :src="imageSrc"/></div>
+                    <div class="mb-3">
+                        <img id="coursePhoto" style="width:60%" :src="imageSrc"/></div>
                     </div>
                     <div class="mb-3">
                         <label for="nomeProfessor" class="form-label">Nome do professor</label>
@@ -31,7 +32,7 @@
                         <add-lesson :lesson ="l" @lessonAcima = "acima" @lessonAbaixo = "abaixo"/> 
 
                     </div>
-                    <button type = "button" @click ="AddLesson()" class="btn btn-default" style="margin-top: 20px;">Adicionar mais aulas</button>
+                    <button type = "button" @click ="AddLesson()" class="btn btn-default" style="margin-top: 20px; margin-right: 10px">Adicionar mais aulas</button>
                     
                     <button type="submit" class="btn btn-default" style="margin-top: 20px;">salvar</button>
 

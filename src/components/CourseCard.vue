@@ -1,9 +1,5 @@
 <template>
-  <!-- Início Card 01 -->
-  
-
-  <section class="section-card">
-    <div class="container">
+                <!-- Início Card 01 -->
       <h2> {{ course.title}} </h2>
      <p style="font-size: 18px; font-weight: 400">
               <br>
@@ -14,20 +10,17 @@
           <img :src="image" class="img-fluid" />
         </div>
         <div class="col-md-6 d-flex">
-          <div class="align-self-center">
-            <h2 class="title-component">{{ course.name }}</h2>
-
+          <div class="align-self-start">
             <p style="font-size: 18px; font-weight: 400">
               {{ course.description }}
             </p>
-            
             <router-link  :to="{name:'CourseDetails',params:{courseId:course.id}}" class="btn btn-default">começar agora</router-link>
           </div> 
         </div>
         <div class="grey-line"></div>
       </div>
-    </div>
-  </section>
+   
+  
 </template>
 
 <script>

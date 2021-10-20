@@ -46,7 +46,29 @@ h4 {
 }
 
 .home-title {
-    padding: 60px 0;
+    padding-top: 60px;
+}
+
+/* HOME */
+
+.card{
+    border-radius: 4px;
+    background: #fff;
+    margin-bottom: 20px;
+    box-shadow: 0 6px 10px rgba(0,0,0,.08), 0 0 6px rgba(0,0,0,.05);
+    transition: .3s transform cubic-bezier(.155,1.105,.295,1.12),.3s box-shadow,.3s -webkit-transform cubic-bezier(.155,1.105,.295,1.12);
+    padding: 14px 80px 18px 36px;
+    cursor: pointer;
+}
+
+.card:hover{
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06);
+}
+
+.display-5 {
+    font-weight: 200;
+    color: white;
 }
 
 /* SECTION */
@@ -66,7 +88,31 @@ h4 {
     border-radius: 40px;
     background: #419488;
     transition: all 0.3s ease 0s;
-  }
+}
+
+.btn-default:hover {
+    color: white;
+    background: #104640;
+}
+
+.btn-default.nav-login {
+    color: #419488;
+    font-weight: 700;
+    letter-spacing: 1px;
+    line-height: 25px;
+    width: 160px;
+    margin-left: 20px;
+    border: none;
+    border-radius: 40px;
+    background: white;
+    transition: all 0.3s ease 0s;
+}
+
+.btn-default.nav-login:hover {
+    font-weight: 700;
+    color: white;
+    background: #104640;
+}
 
 /* LINHA CINZA */
 
@@ -123,6 +169,27 @@ h4 {
     .selected-title-component {
         font-size: 40px;
         font-weight: 700;
+    }
+}
+
+@media (max-width: 974px) {
+    .btn-default.nav-login {
+        color: #419488;
+        font-weight: 700;
+        letter-spacing: 1px;
+        line-height: 25px;
+        width: 160px;
+        margin-left: 0px;
+        border: none;
+        border-radius: 40px;
+        background: white;
+        transition: all 0.3s ease 0s;
+    }
+    
+    .btn-default.nav-login:hover {
+        font-weight: 700;
+        color: white;
+        background: #104640;
     }
 }
 

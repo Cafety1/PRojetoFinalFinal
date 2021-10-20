@@ -8,11 +8,11 @@
                     </div>
                 </div>
                 <div class="col-md-5">
-                    <h2 class="title-component">Aula {{lesson.order}} - {{lesson.title}} </h2>
+                    <h2 class="title-component" style="padding-top: 30px">Aula {{lesson.order}} - {{lesson.title}} </h2>
                     <p style="font-size: 20px; font-weight: 300;">
                          {{lesson.description}}
                     </p>
-                    <button @click="GoLink()"> Teste</button>
+                    <button class="btn btn-default" @click="GoLink()"> Assista agora</button>
                 </div>
                     <div class="grey-line-aulas col-md-10">
                     </div>

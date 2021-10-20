@@ -31,7 +31,10 @@
       v-bind:aria-labelledby="header"
     >
       <div class="accordion-body">
-        <button type='button' @click="emitAcima">↑</button><button type='button' @click="emitAbaixo">↓</button>
+        <h4>
+          <i @click="emitAcima" class="fas fa-arrow-circle-up"></i>
+          <i @click="emitAbaixo" class="fas fa-arrow-circle-down"></i>
+        </h4>
         <div class="mb-3">
           <label for="tituloAula" class="form-label">Título da aula</label>
           <input
@@ -57,7 +60,7 @@
                 <input class="form-control" type="file" id="formFile" @change="previewFoto(this, lessonPhotoId);">
                 <div id="imageHelp" class="form-text">Escolha uma imagem para ser a capa da sua aula.</div>
 
-          <div class="mb-3"><img :id="lessonPhotoId" style="width:100% " :src="imageSrc"/></div>
+          <div class="mb-3"><img :id="lessonPhotoId" style="width:60%" :src="imageSrc"/></div>
         </div>
         <div class="mb-3">
           <label for="descricaoAula" class="form-label"

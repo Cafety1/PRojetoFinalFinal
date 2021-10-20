@@ -3,8 +3,8 @@
     
       <td colspan="2">{{course.title}}</td>
       <td >
-        <router-link :to="{name:'CourseForm',params:{courseId:course.id}}" type="button" class="btn btn-warning"  >editar</router-link>
-        <button type="button" class="btn btn-danger pull-right" data-toggle="modal"  @click="deleteCourse" >Excluir</button>
+        <router-link :to="{name:'CourseForm',params:{courseId:course.id}}" type="button" class="btn btn-warning" style="margin: 5px;5px;5px;0px">editar</router-link>
+        <button type="button" class="btn btn-danger pull-right" style="margin: 5px;5px;5px;0px" data-toggle="modal"  @click="deleteCourse" >excluir</button>
       </td>
     
  
