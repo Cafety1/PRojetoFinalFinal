@@ -1,40 +1,48 @@
 <template>
-  <div class="accoordion-item">
+  <div class="accoordion-item card">
     <h4 v-if="novo" class="accordion-header" :id="header">
-      <button
-        class="accordion-button"
-        type="button"
+        Nova Aula
+     <i @click="emitAcima" class="fas fa-arrow-circle-up"></i>
+          <i @click="emitAbaixo" class="fas fa-arrow-circle-down"></i>
+          <span 
+        class="badge bg-default position-absolute end-0"
+        style="margin-right: 20px; background: #419488"
         data-bs-toggle="collapse"
         v-bind:data-bs-target="panelId"
         aria-expanded="true"
         v-bind:aria-controls="panel"
       >
-        Nova Aula 
-      </button>
-    </h4>
+      <i class="fas fa-chevron-down" ></i>
+      </span>
+      </h4>
     <h4 v-if="!novo" class="accordion-header" :id="header">
-      <button
-        class="accordion-button"
-        type="button"
+      {{ dado.title }}
+          <i @click="emitAcima" class="fas fa-arrow-circle-up"></i>
+          <i @click="emitAbaixo" class="fas fa-arrow-circle-down"></i>
+          <span 
+        class="badge bg-default position-absolute end-0"
+        style="margin-right: 20px; background: #419488"
         data-bs-toggle="collapse"
         v-bind:data-bs-target="panelId"
         aria-expanded="true"
         v-bind:aria-controls="panel"
+        
       >
-      {{ dado.title }}
-      </button>
+      <i class="fas fa-chevron-down"></i>
+      </span>
     </h4>
-
     <div
       :id="panel"
       :class="dado.id <=0 ? 'accordion-collapse collapse show':'accordion-collapse collapse'"
       v-bind:aria-labelledby="header"
     >
       <div class="accordion-body">
+        <!--
         <h4>
           <i @click="emitAcima" class="fas fa-arrow-circle-up"></i>
           <i @click="emitAbaixo" class="fas fa-arrow-circle-down"></i>
         </h4>
+        -->
         <div class="mb-3">
           <label for="tituloAula" class="form-label">Título da aula</label>
           <input
@@ -59,7 +67,6 @@
             <label for="formFile" class="form-label">Capa</label>
                 <input class="form-control" type="file" id="formFile" @change="previewFoto(this, lessonPhotoId);">
                 <div id="imageHelp" class="form-text">Escolha uma imagem para ser a capa da sua aula.</div>
-
           <div class="mb-3"><img :id="lessonPhotoId" style="width:60%" :src="imageSrc"/></div>
         </div>
         <div class="mb-3">
@@ -77,7 +84,6 @@
     </div>
   </div>
 </template>
-
 <script>
 import CONFIG from "../Service/Config";
 
