@@ -7,8 +7,6 @@ import CourseDetails from "../views/CourseDetails.vue";
 import AddCourse from "../components/AddCourse.vue";
 import AddLesson from "../components/AddLesson.vue";
 
-
-
 const routes = [
   
   {
@@ -48,7 +46,6 @@ const routes = [
     name: "AddLesson",    
     component: AddLesson,
   },
-  
 ];
 
 const router = createRouter({

@@ -1,10 +1,11 @@
 <template>
+
   <div class="accoordion-item card">
     <h4 v-if="novo" class="accordion-header" :id="header">
-        Nova Aula
-     <i @click="emitAcima" class="fas fa-arrow-circle-up"></i>
-          <i @click="emitAbaixo" class="fas fa-arrow-circle-down"></i>
-          <span 
+      Nova Aula
+      <i @click="emitAcima" class="fas fa-arrow-circle-up"></i>
+      <i @click="emitAbaixo" class="fas fa-arrow-circle-down"></i>
+      <span
         class="badge bg-default position-absolute end-0"
         style="margin-right: 20px; background: #419488"
         data-bs-toggle="collapse"
@@ -12,37 +13,35 @@
         aria-expanded="true"
         v-bind:aria-controls="panel"
       >
-      <i class="fas fa-chevron-down" ></i>
+        <i class="fas fa-chevron-down"></i>
       </span>
-      </h4>
+    </h4>
     <h4 v-if="!novo" class="accordion-header" :id="header">
       {{ dado.title }}
-          <i @click="emitAcima" class="fas fa-arrow-circle-up"></i>
-          <i @click="emitAbaixo" class="fas fa-arrow-circle-down"></i>
-          <span 
+      <i @click="emitAcima" class="fas fa-arrow-circle-up"></i>
+      <i @click="emitAbaixo" class="fas fa-arrow-circle-down"></i>
+      <span
         class="badge bg-default position-absolute end-0"
         style="margin-right: 20px; background: #419488"
         data-bs-toggle="collapse"
         v-bind:data-bs-target="panelId"
         aria-expanded="true"
         v-bind:aria-controls="panel"
-        
       >
-      <i class="fas fa-chevron-down"></i>
+        <i class="fas fa-chevron-down"></i>
       </span>
     </h4>
     <div
       :id="panel"
-      :class="dado.id <=0 ? 'accordion-collapse collapse show':'accordion-collapse collapse'"
+      :class="
+        dado.id <= 0
+          ? 'accordion-collapse collapse show'
+          : 'accordion-collapse collapse'
+      "
       v-bind:aria-labelledby="header"
     >
       <div class="accordion-body">
-        <!--
-        <h4>
-          <i @click="emitAcima" class="fas fa-arrow-circle-up"></i>
-          <i @click="emitAbaixo" class="fas fa-arrow-circle-down"></i>
-        </h4>
-        -->
+       
         <div class="mb-3">
           <label for="tituloAula" class="form-label">Título da aula</label>
           <input
@@ -64,10 +63,19 @@
           />
         </div>
         <div class="mb-3">
-            <label for="formFile" class="form-label">Capa</label>
-                <input class="form-control" type="file" id="formFile" @change="previewFoto(this, lessonPhotoId);">
-                <div id="imageHelp" class="form-text">Escolha uma imagem para ser a capa da sua aula.</div>
-          <div class="mb-3"><img :id="lessonPhotoId" style="width:60%" :src="imageSrc"/></div>
+          <label for="formFile" class="form-label">Capa</label>
+          <input
+            class="form-control"
+            type="file"
+            id="formFile"
+            @change="previewFoto(this, lessonPhotoId)"
+          />
+          <div id="imageHelp" class="form-text">
+            Escolha uma imagem para ser a capa da sua aula.
+          </div>
+          <div class="mb-3">
+            <img :id="lessonPhotoId" style="width: 60%" :src="imageSrc" />
+          </div>
         </div>
         <div class="mb-3">
           <label for="descricaoAula" class="form-label"
@@ -83,16 +91,18 @@
       </div>
     </div>
   </div>
+
 </template>
 
 <script>
+
 import CONFIG from "../Service/Config";
 
 export default {
   data() {
     return {
       dado: Object,
-      imageRender:String
+      imageRender: String,
     };
   },
   props: {
@@ -102,29 +112,25 @@ export default {
   computed: {
     novo() {
       return this.dado.id <= 0;
-      
     },
     header() {
-        return "header_"+this.dado.id
+      return "header_" + this.dado.id;
     },
-    
     panel() {
-        return "panel_"+this.dado.id
+      return "panel_" + this.dado.id;
     },
     panelId() {
-        return "#panel_"+this.dado.id
+      return "#panel_" + this.dado.id;
     },
     lessonPhotoId() {
-        return "lessonPhoto_"+this.dado.id
+      return "lessonPhoto_" + this.dado.id;
     },
-
-
     imageSrc() {
-        if (this.dado.urlImage != null && this.dado.urlImage>=0) {
-            return CONFIG.baseUrl + "/Images/" + this.dado.urlImage;
-        } else {
-            return ""
-        }
+      if (this.dado.urlImage != null && this.dado.urlImage >= 0) {
+        return CONFIG.baseUrl + "/Images/" + this.dado.urlImage;
+      } else {
+        return "";
+      }
     },
   },
 
@@ -133,49 +139,37 @@ export default {
       this.$emit("lessonapagarcomclick", this.dado);
     },
     emitAcima(event) {
-      event.stopPropagation()
+      event.stopPropagation();
       this.$emit("lessonAcima", this.dado.id);
-      
     },
     emitAbaixo(event) {
-      event.stopPropagation()
+      event.stopPropagation();
       this.$emit("lessonAbaixo", this.dado.id);
     },
-    
-
     previewFoto(evt, idElement) {
-            this.dado.urlImage = 0
-    var tgt = evt.target || window.event.srcElement,
-    files = tgt.files;
-
-    // FileReader support
-    if (FileReader && files && files.length) {
+      this.dado.urlImage = 0;
+      var tgt = evt.target || window.event.srcElement,
+        files = tgt.files;
+      
+      if (FileReader && files && files.length) {
         var fr = new FileReader();
-        this.dado.imageRender = ""
-        fr.gambiarra = this.dado
-        fr.onload = function () {
-            ///ver copm breno
-            document.getElementById(idElement).src = fr.result;
-            // aqui a mágica acontece
-            this.gambiarra.imageRender = fr.result.toString().substring(fr.result.toString().indexOf(",")+1)
-
-        }        
+        this.dado.imageRender = "";
+        fr.gambiarra = this.dado;
+        fr.onload = function () {          
+          document.getElementById(idElement).src = fr.result;          
+          this.gambiarra.imageRender = fr.result
+            .toString()
+            .substring(fr.result.toString().indexOf(",") + 1);
+        };
         fr.readAsDataURL(files[0]);
-    }
-
-    // Not supported
-    else {
-        // fallback -- perhaps submit the input to an iframe and temporarily store
-        // them on the server until the user's session ends.
-    }
-}
-
+      }else {        
+      }
+    },
   },
-
   created() {
     this.dado = this.lesson;
-    this.dado.imageRender = ""
-    this.imageRender = ""
+    this.dado.imageRender = "";
+    this.imageRender = "";
   },
 };
 </script>

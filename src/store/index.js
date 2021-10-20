@@ -16,9 +16,7 @@ const STORE =  createStore({
     SET_TEACHERS(state, teachers) {
       state.teachers = teachers;
     },
-    PUSH_TEACHER(state, teacher){
-      //to-do
-      // verificra se o course a inserir já não existe no state.courses
+    PUSH_TEACHER(state, teacher){      
       state.teachers.push(teacher);
     },
   },
@@ -36,9 +34,7 @@ const STORE =  createStore({
       context.commit("PUSH_COURSE", ret);
     },
     deleteCourse(context, course) {
-      let ret = CourseService.deleteCourse(course.id);
-      //to-do fazer o muttation do state de courses para exluir do array o curso
-      console.log("tem que agora retirar o course do state"+ret)
+      let ret = CourseService.deleteCourse(course.id);      
     }
   },
   getters: {

@@ -1,19 +1,30 @@
 <template>
- 
-    
-      <td colspan="2">{{course.title}}</td>
-      <td >
-        <router-link :to="{name:'CourseForm',params:{courseId:course.id}}" type="button" class="btn btn-warning" style="margin: 5px;5px;5px;0px">editar</router-link>
-        <button type="button" class="btn btn-danger pull-right" style="margin: 5px;5px;5px;0px" data-toggle="modal"  @click="deleteCourse" >excluir</button>
-      </td>
-    
- 
+
+  <td colspan="2">{{ course.title }}</td>
+  <td>
+    <router-link
+      :to="{ name: 'CourseForm', params: { courseId: course.id } }"
+      type="button"
+      class="btn btn-warning"
+      style="margin: 5px;5px;5px;0px"
+      >editar</router-link
+    >
+    <button
+      type="button"
+      class="btn btn-danger pull-right"
+      style="margin: 5px;5px;5px;0px"
+      data-toggle="modal"
+      @click="deleteCourse"
+    >
+      excluir
+    </button>
+  </td>
+
 </template>
 
 <script>
 
-import STORE from "../store/index"
-
+import STORE from "../store/index";
 
 export default {
   name: "CourseFormCard",
@@ -22,15 +33,13 @@ export default {
   },
   methods: {
     deleteCourse() {
-      if(confirm("confirma a exclusão do curso \n"+this.course.title)){
-        STORE.dispatch('deleteCourse', this.course)
-                
+      if (confirm("confirma a exclusão do curso \n" + this.course.title)) {
+        STORE.dispatch("deleteCourse", this.course);
       }
       location.reload();
-    }
-  }
-  
-}
+    },
+  },
+};
 </script>
 
 <style>

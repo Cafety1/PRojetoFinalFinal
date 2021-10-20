@@ -1,11 +1,12 @@
 <template>
+
   <div id="nav">
     <router-link to="/course"></router-link>
     <router-link to="/PainelAdm"></router-link> 
   </div>
   <router-view />
-</template>
 
+</template>
 
 <script>
 

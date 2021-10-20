@@ -7,10 +7,8 @@ import CourseDetails from "../views/CourseDetails.vue";
 import AddCourse from "../components/AddCourse.vue";
 import AddLesson from "../components/AddLesson.vue";
 
-
-
 const routes = [
-  
+
   {
     path: "/",
     name: "Home",
@@ -40,15 +38,14 @@ const routes = [
   },
   {
     path: "/AddCourse",
-    name: "AddCourse",    
+    name: "AddCourse",
     component: AddCourse,
   },
   {
     path: "/AddLesson",
-    name: "AddLesson",    
+    name: "AddLesson",
     component: AddLesson,
   },
-  
 ];
 
 const router = createRouter({
