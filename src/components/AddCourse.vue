@@ -47,6 +47,8 @@ import AddLesson from './AddLesson.vue'
 import CONFIG from "../Service/Config"
 import router from "../router/index"
 import SelectTeachers from "../components/SelectTeachers.vue"
+import Utils from "../Service/Utils"
+
 export default {
   components: { 
       AddLesson,
@@ -80,7 +82,6 @@ export default {
    },
    methods:{
        acima(id) {
-            console.log("entrou no acima  "+id)
             let i = -1
             for (let x =0; x< this.dado.lessons.length; x++) {
                 if (this.dado.lessons[x].id == id) {
@@ -94,7 +95,6 @@ export default {
             }
        },
        abaixo(id) {
-            console.log("entrou no acima  "+id)
             let i = -1
             for (let x = 0; x < this.dado.lessons.length; x++) {
                 if (this.dado.lessons[x].id == id) {
@@ -121,15 +121,13 @@ export default {
            
        },
         onSubmit() {
+            Utils.wait()
             console.log("entrou no onSubmit")
             //verifica se a imagem é nova
             // se nova grava a imagem antes e atualiza o id da foto no this.dado
 
-            console.log(this.dado)
-            console.log(this.dado.urlCover)
-            console.log(document.getElementById('coursePhoto').src.substring(document.getElementById('coursePhoto').src.indexOf(',')+1) )
             
-            this.$emit('CourseForm-submitted', JSON.stringify(this.dado), this.dado.urlCover, document.getElementById('coursePhoto').src.substring(document.getElementById('coursePhoto').src.indexOf(',')+1) );
+            this.$emit('CourseForm-submitted', JSON.stringify(this.dado))//, this.dado.urlCover, document.getElementById('coursePhoto').src.substring(document.getElementById('coursePhoto').src.indexOf(',')+1) );
 
             setTimeout(() => router.push({name:"PainelAdm",params:{}}) , 1000 )
         },

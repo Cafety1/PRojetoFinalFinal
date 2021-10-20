@@ -26,12 +26,10 @@ const STORE =  createStore({
     async fetchAllCourses(context) {
         let response = await CourseService.getAllCourses()
         await context.commit('SET_COURSES',response.data)
-        console.log("commit com "+response.data)
     },
     async fetchAllTeachers(context) {
       let response = await CourseService.getAllTeachers()
       await context.commit('SET_TEACHERS',response.data)
-      console.log("commit com "+response.data)
     },
     saveCourse(context, course) {
       let ret = CourseService.saveCourse(course);
@@ -40,13 +38,12 @@ const STORE =  createStore({
     deleteCourse(context, course) {
       let ret = CourseService.deleteCourse(course.id);
       //to-do fazer o muttation do state de courses para exluir do array o curso
-      context.commit("PUSH_COURSE", ret);
+      console.log("tem que agora retirar o course do state"+ret)
     }
   },
   getters: {
     getCourse: (state) =>(id) =>{
       let ret = id
-      //console.log(state.courses)
       state.courses.forEach(c => {if (c.id == id){ret = c}})
       return ret;
     },

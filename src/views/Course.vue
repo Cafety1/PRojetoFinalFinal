@@ -9,6 +9,8 @@
 
 import CourseList from "../components/CourseList.vue";
 import STORE from "../store/index"
+import Utils from "../Service/Utils"
+
 export default {
     name: "course",
     components:{
@@ -18,6 +20,12 @@ export default {
       return {
       coursesList: Object
       }
+    },
+    beforeCreate() {
+        Utils.wait()
+    },
+    updated(){
+        Utils.fimWait()
     },
     created(){
       setInterval(()=>this.coursesList = STORE.getters.getCourses, 500)

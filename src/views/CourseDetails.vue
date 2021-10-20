@@ -74,12 +74,7 @@ export default {
     } 
     },
   created(){
-    console.log("no detail "+Number.parseInt(this.courseId))
     this.coursedetail = STORE.getters.getCourse(Number.parseInt(this.courseId))
-    
-    console.log(this.coursedetail)
-    console.log("aqui " + this.coursedetail.lessons)
-   
   }
 }
 </script>

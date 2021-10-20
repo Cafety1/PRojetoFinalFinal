@@ -4,7 +4,7 @@
             
                 <div class="col-md-5">
                     <div class="embed-responsive embed-responsive-21by9">
-                        
+                      <img :src="image" class="img-fluid" /> 
                     </div>
                 </div>
                 <div class="col-md-5">
@@ -25,7 +25,7 @@
 <script>
 
 
-
+import CONFIG from "../Service/Config"
 export default {
     name: "LessonCard",
         props:{
@@ -35,9 +35,18 @@ export default {
         methods:{
             GoLink(){
                 window.open(this.lesson.link);
+            },
+            
 
-
-            }
+        },
+        computed: {
+            image(){
+               if (this.lesson.urlImage != null && this.lesson.urlImage>=0) {
+            return CONFIG.baseUrl + "/Images/" + this.lesson.urlImage;
+        } else {
+            return ""
+        }
+            },
         }
     
 }

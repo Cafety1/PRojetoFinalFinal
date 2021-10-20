@@ -6,6 +6,7 @@ export default class Course {
         this.teacher = {id: 0, name: ""}
         this.urlCover = null
         this.lessons = []
+        // só para o prettier não reclamar json não usado
         console.log(json)
         //if(json != undefined && json != "") {
         //

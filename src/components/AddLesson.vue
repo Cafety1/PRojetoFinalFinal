@@ -84,6 +84,7 @@
     </div>
   </div>
 </template>
+
 <script>
 import CONFIG from "../Service/Config";
 
@@ -131,18 +132,18 @@ export default {
     onSubmit() {
       this.$emit("lessonapagarcomclick", this.dado);
     },
-    emitAcima() {
+    emitAcima(event) {
+      event.stopPropagation()
       this.$emit("lessonAcima", this.dado.id);
-
+      
     },
-    emitAbaixo() {
+    emitAbaixo(event) {
+      event.stopPropagation()
       this.$emit("lessonAbaixo", this.dado.id);
-
     },
     
 
     previewFoto(evt, idElement) {
-        console.log(idElement)
             this.dado.urlImage = 0
     var tgt = evt.target || window.event.srcElement,
     files = tgt.files;
@@ -150,13 +151,13 @@ export default {
     // FileReader support
     if (FileReader && files && files.length) {
         var fr = new FileReader();
-        this.dado.urlImage = -1
-        this.dado.image64 = ""
-        console.log(this)
+        this.dado.imageRender = ""
+        fr.gambiarra = this.dado
         fr.onload = function () {
-            console.log(this.parent)
             ///ver copm breno
             document.getElementById(idElement).src = fr.result;
+            // aqui a mágica acontece
+            this.gambiarra.imageRender = fr.result.toString().substring(fr.result.toString().indexOf(",")+1)
 
         }        
         fr.readAsDataURL(files[0]);
