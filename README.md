@@ -1,7 +1,7 @@
 # cafeinaprojeto
 <h1 align="center">
   <img 
-    src="../../public/logoDin.svg"
+    src="https://uploaddeimagens.com.br/imagens/0PvnS4Q"
   />
   <p>☕Cafeina Project ☕</p>
 </h1>
