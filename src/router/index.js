@@ -4,8 +4,6 @@ import Course from "../views/Course.vue";
 import CourseForm from "../views/CourseForm.vue";
 import PainelAdm from "../views/PainelAdm.vue";
 import CourseDetails from "../views/CourseDetails.vue";
-import AddCourse from "../components/AddCourse.vue";
-import AddLesson from "../components/AddLesson.vue";
 
 const routes = [
 
@@ -36,16 +34,7 @@ const routes = [
     name: "CourseDetails",
     component: CourseDetails,
   },
-  {
-    path: "/AddCourse",
-    name: "AddCourse",
-    component: AddCourse,
-  },
-  {
-    path: "/AddLesson",
-    name: "AddLesson",
-    component: AddLesson,
-  },
+  
 ];
 
 const router = createRouter({
