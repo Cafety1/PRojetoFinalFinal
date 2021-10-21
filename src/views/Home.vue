@@ -1,9 +1,11 @@
 <template>
 
-  <div>
-    <img src="../assets/caffeine9.jpg" />
-  </div>
-
+  <div class="container">
+    <div class="center-center " style="margin:0 auto">
+        <img src="../assets/home-01.png" />
+    </div>
+  </div>  
+  
 </template>
 
 <script>

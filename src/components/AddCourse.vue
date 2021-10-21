@@ -2,7 +2,7 @@
 
   <section class="section-card">
     <div class="container">
-      <h2 class="title-component" style="margin-bottom: 30px">Novo Curso</h2>
+      <h2 class="title-component" style="margin-bottom: 30px" >Novo Curso</h2>
       <div class="form-curso">
         <form @submit.prevent="onSubmit">
           <div class="mb-3">
@@ -15,11 +15,11 @@
               v-model="dado.title"
             />
             <div id="emailHelp" class="form-text">
-              Por Favor, coloque o nome da Aula.
+              Por favor, coloque o nome da Aula.
             </div>
           </div>
           <div class="mb-3">
-            <label for="formFile" class="form-label">Capa</label>
+            <label for="formFile" class="form-label">Capa do curso</label>
             <input
               class="form-control"
               type="file"
@@ -27,7 +27,7 @@
               @change="previewFoto(this, 'coursePhoto')"
             />
             <div id="imageHelp" class="form-text">
-              Escolha uma imagem para ser a capa de seu curso.
+              Escolha uma imagem para ser a capa do seu curso.
             </div>
             <div class="mb-3">
               <img id="coursePhoto" style="width: 60%" :src="imageSrc" />
@@ -35,10 +35,10 @@
           </div>
           <div class="mb-3">
             <label for="nomeProfessor" class="form-label"
-              >Nome do professor</label
+              >Nome do professor &nbsp; </label
             >
             <SelectTeachers :teacher="dado.teacher" />
-            <input
+            <input style ="display: none"
               type="text"
               class="form-control"
               id="nomeProfessor"
@@ -75,7 +75,7 @@
             class="btn btn-default"
             style="margin-top: 20px; margin-right: 10px"
           >
-            Adicionar mais aulas
+            adicionar mais aulas
           </button>
 
           <button

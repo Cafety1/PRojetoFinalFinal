@@ -63,7 +63,7 @@
           />
         </div>
         <div class="mb-3">
-          <label for="formFile" class="form-label">Capa</label>
+          <label for="formFile" class="form-label">Capa da aula</label>
           <input
             class="form-control"
             type="file"

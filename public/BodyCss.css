@@ -77,6 +77,17 @@ h4 {
     padding: 60px 0;
 }
 
+.center-center {
+    width: 400px;
+    height: 500px;
+    padding-top: 6vh;  
+      
+}
+.center-home{
+    align-items: center;
+    min-width: 100%;
+}
+
 /* BOTÃO */
 
 .btn-default {

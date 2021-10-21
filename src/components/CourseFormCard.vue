@@ -1,6 +1,6 @@
 <template>
 
-  <td colspan="2">{{ course.title }}</td>
+  <td colspan="2" class="align-middle">{{ course.title }}</td>
   <td>
     <router-link
       :to="{ name: 'CourseForm', params: { courseId: course.id } }"

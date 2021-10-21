@@ -2,11 +2,11 @@
 
   <div class="col-md-5">
     <div class="embed-responsive embed-responsive-21by9">
-      <img :src="image" class="img-fluid" />
+      <img :src="image" class="img-fluid" style="padding-top: 40px"/>
     </div>
   </div>
   <div class="col-md-5">
-    <h2 class="title-component" style="padding-top: 30px">
+    <h2 class="title-component" style="padding-top: 40px">
       Aula {{ lesson.order }} - {{ lesson.title }}
     </h2>
     <p style="font-size: 20px; font-weight: 300">
