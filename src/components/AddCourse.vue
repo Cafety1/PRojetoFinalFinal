@@ -179,8 +179,12 @@ export default {
 
       if (FileReader && files && files.length) {
         var fr = new FileReader();
+        fr.gambiarra = this.dado;
         fr.onload = function () {
           document.getElementById(idElement).src = fr.result;
+          this.gambiarra.imageRender = fr.result
+            .toString()
+            .substring(fr.result.toString().indexOf(",") + 1);
         };
         fr.readAsDataURL(files[0]);
       }else {//Sai do else

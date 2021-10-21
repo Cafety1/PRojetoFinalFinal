@@ -50,7 +50,6 @@ export default {
 
       if (obj.imageRender != undefined && obj.imageRender != "") {
         let idImg = await ImageService.saveImage(obj.urlCover, obj.imageRender);
-
         obj.urlCover = "" + idImg;
       }
       STORE.dispatch("saveCourse", obj);
