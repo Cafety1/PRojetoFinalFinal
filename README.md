@@ -27,7 +27,7 @@
 
 ```bash
   # Clone the project
-  $ git clone https://github.com/Cafety1/PRojetoFinalFinal.git
+  $ git clone https://github.com/Cafety1/ProjetoFinalFinal.git
 ```
 ```bash
   # Enter directory
